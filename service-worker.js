@@ -1,10 +1,13 @@
 var CACHE_NAME = 'my-site-cache-v5';
-console.log(window.location.origin)
+
+var baseUrl = new URL(self.registration.scope).pathname; 
+console.log(baseUrl);
+
 var urlsToCache = [
-  '.',
-  'index.html',
-  'index.js',
-  'icon.png'
+  baseUrl,
+  baseUrl + 'index.html',
+  baseUrl + 'index.js',
+  baseUrl + 'icon.png'
 ];
 
 self.addEventListener('install', function(event) {
