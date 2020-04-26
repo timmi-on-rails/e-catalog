@@ -7,7 +7,10 @@ var urlsToCache = [
   baseUrl,
   baseUrl + 'index.html',
   baseUrl + 'index.js',
+  baseUrl + 'stylesheet.css',
   baseUrl + 'icon.png',
+  baseUrl + 'pdf.js',
+  baseUrl + 'pdf.worker.js',
   'https://timmi-on-rails.github.io/catalog/catalog.pdf'
 ];
 
