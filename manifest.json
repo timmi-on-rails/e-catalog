@@ -1,0 +1,13 @@
+{
+  "name": "Catalog",
+  "short_name": "Catalog",
+  "description": "Browse catalog",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "start_url": ".",
+  "display": "standalone",
+  "icons": [{
+    "src": "icon.png",
+    "sizes": "512x512"
+  }]
+}
