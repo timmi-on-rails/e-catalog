@@ -7,7 +7,8 @@ var urlsToCache = [
   baseUrl,
   baseUrl + 'index.html',
   baseUrl + 'index.js',
-  baseUrl + 'icon.png'
+  baseUrl + 'icon.png',
+  'https://timmi-on-rails.github.io/catalog/catalog.pdf'
 ];
 
 self.addEventListener('install', function(event) {
