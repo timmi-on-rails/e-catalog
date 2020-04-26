@@ -8,13 +8,24 @@ var pdfjsLib = window['pdfjs-dist/build/pdf'];
 // The workerSrc property shall be specified.
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.js';
 
+var pdf = null;
+var pageNumber = 1;
+
 // Asynchronous download of PDF
 var loadingTask = pdfjsLib.getDocument(url);
-loadingTask.promise.then(function(pdf) {
+loadingTask.promise.then(function(_pdf) {
   console.log('PDF loaded');
   
   // Fetch the first page
-  var pageNumber = 1;
+  pdf = _pdf;
+  renderCurrentPage()
+  
+}, function (reason) {
+  // PDF loading error
+  console.error(reason);
+});
+
+function renderCurrentPage() {
   pdf.getPage(pageNumber).then(function(page) {
     console.log('Page loaded');
 
@@ -36,10 +47,25 @@ loadingTask.promise.then(function(pdf) {
       console.log('Page rendered');
     });
   });
-}, function (reason) {
-  // PDF loading error
-  console.error(reason);
-});
+}
+
+function onPrevPage() {
+  if (pageNumber <= 1) {
+    return;
+  }
+  pageNumber--;
+  renderCurrentPage();
+}
+document.getElementById('prev').addEventListener('click', onPrevPage);
+
+function onNextPage() {
+  if (pageNumber >= pdf.numPages) {
+    return;
+  }
+  pageNumber++;
+  renderCurrentPage();
+}
+document.getElementById('next').addEventListener('click', onNextPage);
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
