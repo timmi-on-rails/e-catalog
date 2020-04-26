@@ -18,15 +18,11 @@ loadingTask.promise.then(function(pdf) {
   pdf.getPage(pageNumber).then(function(page) {
     console.log('Page loaded');
 
-    
-
-    //var viewport = page.getViewport({scale: scale});
-
     // Prepare canvas using PDF page dimensions
     var canvas = document.getElementById('the-canvas');
     var context = canvas.getContext('2d');
-    var scale = 1.0;
-    var viewport = page.getViewport({scale: 2.0});
+    var scale = window.screen.width / page.getViewport({scale: 1.0}).width;
+    var viewport = page.getViewport({scale: scale});
     canvas.height = viewport.height;
     canvas.width = viewport.width;
 
