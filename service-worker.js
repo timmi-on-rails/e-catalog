@@ -1,4 +1,5 @@
 var CACHE_NAME = 'my-site-cache-v5';
+console.log(window.location.origin)
 var urlsToCache = [
   '.',
   'index.html',
